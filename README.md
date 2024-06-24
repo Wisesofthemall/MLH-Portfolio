@@ -19,8 +19,8 @@ _Note: Make sure to include a link to the Issue you're progressing on inside of 
 ### Portfolio Tasks
 
 - [x] Add a photo of yourself to the website
-- [ ] Add an "About youself" section to the website.
-- [ ] Add your previous work experiences
+- [x] Add an "About youself" section to the website.
+- [x] Add your previous work experiences
 - [ ] Add your hobbies (including images)
 - [ ] Add your current/previous education
 - [ ] Add a map of all the cool locations/countries you visited
