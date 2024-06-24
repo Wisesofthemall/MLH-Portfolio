@@ -128,3 +128,10 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.education {
+  background-color: #1d539f;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
