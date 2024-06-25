@@ -23,7 +23,7 @@ _Note: Make sure to include a link to the Issue you're progressing on inside of 
 - [x] Add your previous work experiences
 - [x] Add your hobbies (including images)
 - [x] Add your current/previous education
-- [ ] Add a map of all the cool locations/countries you visited
+- [x] Add a map of all the cool locations/countries you visited
 
 ### Flask Tasks
 
