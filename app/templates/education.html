@@ -1,0 +1,9 @@
+<h1>{{education}}</h1>
+<div id="education" class="profile-picture">
+  {% for edu in education_entries %}
+  <h2>{{ edu.degree }}</h2>
+  <h3>{{ edu.institution }}</h3>
+  <h5>{{ edu.graduation_date }}</h5>
+  <p>{{ edu.details }}</p>
+  {% endfor %}
+</div>

@@ -32,6 +32,17 @@
         </a>
       </div>
     </header>
+    <div class="nav-content">
+      <nav class="main-nav">
+        <ul class="nav">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('work') }}">Work Experience</a></li>
+          <li><a href="{{ url_for('hobby') }}">Hobbies</a></li>
+          <li><a href="{{ url_for('education') }}">Education</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <div class="profile">
       <div id="profile-picture" class="profile-picture">
@@ -40,66 +51,25 @@
       <h1>{{ title }}</h1>
     </div>
     <hr />
-    <div class="about section">
-      <h1>{{about.name}}</h1>
-      <div id="about-yourself" class="profile-picture">
-        {{about.info}}
-
-
-      </div>
-    </div>
+    <div class="about section">{% include "about.html" %}</div>
     <hr />
-    <div class="work section">
-      <h1>{{work}}</h1>
-      <div id="work-experience" class="profile-picture">
-        {% for experience in work_experiences %}
-        <h2>{{ experience.title }}</h2>
-        <h3>{{ experience.company }}</h3>
-        <h5>{{ experience.start_date }} - {{ experience.end_date }}</h5>
-        <ul>
-          {% for responsibility in experience.responsibilities %}
-          <li>{{ responsibility }}</li>
-          {% endfor %}
-        </ul>
-        {% endfor %}
-      </div>
-    </div>
+    <div class="work section">{% include "work.html" %}</div>
     <hr />
-    <div class="hobby section">
-      <h1>{{hobby}}</h1>
-      <div id="hobbies" class="profile-picture">
-        {% for hobby in hobbies %}
-        <h2>{{ hobby.name }}</h2>
-        <img src="{{ hobby.image }}" />
-        <p>{{ hobby.description }}</p>
-        {% endfor %}
-      </div>
-    </div>
-    <hr/>
-    <div class="education">
-      <h1>{{education}}</h1>
-      <div id="education" class="profile-picture">
-        {% for edu in education_entries %}
-        <h2>{{ edu.degree }}</h2>
-        <h3>{{ edu.institution }}</h3>
-        <h5>{{ edu.graduation_date }}</h5>
-        <p>{{ edu.details }}</p>
-        {% endfor %}
-
-    </div>
+    <div class="hobby section">{% include "hobby.html" %}</div>
     <hr />
-    <div class="places section ">
+    <div class="education">{% include "education.html" %}</div>
+    <hr />
+    <div class="places section">
       <h1>{{places}}</h1>
       <div id="places" class="profile-picture">
         <h2>United States</h2>
-        <div class=" img">
-        <img class = "map" src="./static/img/Map.png" />
-      </div>
+        <div class="img">
+          <img class="map" src="./static/img/Map.png" />
+        </div>
         <p>
           I was born in the United States and have lived here my whole life. I
           have visited 3 states and 6 cities in the United States.
         </p>
-
       </div>
     </div>
   </body>

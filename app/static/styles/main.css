@@ -144,3 +144,17 @@ body {
   align-items: center;
   display: flex;
 }
+
+.places {
+  background-color: #1d539f;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.nav {
+  background-color: #1d539f;
+  color: white;
+  width: 200px;
+  margin-right: auto;
+}
