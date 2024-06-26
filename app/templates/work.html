@@ -1,0 +1,13 @@
+<h1>{{work}}</h1>
+<div id="work-experience" class="profile-picture">
+  {% for experience in work_experiences %}
+  <h2>{{ experience.title }}</h2>
+  <h3>{{ experience.company }}</h3>
+  <h5>{{ experience.start_date }} - {{ experience.end_date }}</h5>
+  <ul>
+    {% for responsibility in experience.responsibilities %}
+    <li>{{ responsibility }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</div>

@@ -1,0 +1,8 @@
+<h1>{{hobby}}</h1>
+<div id="hobbies" class="profile-picture">
+  {% for hobby in hobbies %}
+  <h2>{{ hobby.name }}</h2>
+  <img src="{{ hobby.image }}" />
+  <p>{{ hobby.description }}</p>
+  {% endfor %}
+</div>
