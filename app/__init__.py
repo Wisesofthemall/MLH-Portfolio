@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 """
-    View function for each route. (e.g. /, /about, /work, /hobby, /education)
+    View function for each route. (e.g. /, /about, /work, /hobby, /education, /place)
 
     Renders the html template with the 'context' dictionary and the 'URL' environment variable.
 
@@ -36,3 +36,7 @@ def hobby():
 @app.route('/education')
 def education():
     return render_template('education.html', **context, url=os.getenv("URL"))
+
+@app.route('/place')
+def place():
+    return render_template('place.html', **context, url=os.getenv("URL"))

@@ -1,5 +1,73 @@
-<h1>{{education}}</h1>
-<div id="education" class="profile-picture">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta property="og:title" content="Personal Portfolio" />
+  <meta property="og:description" content="My Personal Portfolio" />
+  <meta property="og:url" content="{{ url }}" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+
+  <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+  <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+  <title>{{ title }}</title>
+</head>
+
+<header class="nav-bar">
+  <div class="bg-gray-800 p-4">
+    <!-- Main Navigation Links -->
+    <nav class="container mx-auto">
+      <ul class="flex space-x-4 text-white">
+        <li>
+          <a href="{{ url_for('index') }}" class="hover:text-gray-400">Home</a>
+        </li>
+        <li>
+          <a href="{{ url_for('about') }}" class="hover:text-gray-400">About</a>
+        </li>
+        <li>
+          <a href="{{ url_for('work') }}" class="hover:text-gray-400"
+            >Work Experience</a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('hobby') }}" class="hover:text-gray-400"
+            >Hobbies</a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('education') }}" class="hover:text-gray-400"
+            >Education</a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('place') }}" class="hover:text-gray-400">Place</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Logo with link to home -->
+  <div class="nav-content">
+    <a href="/">
+      <div class="nav-logo">
+        <img src="./static/img/logo.svg" />
+      </div>
+    </a>
+  </div>
+</header>
+<h1 class="text-white text-4xl font-bold">{{education}}</h1>
+<hr />
+<div id="education" class="profile-picture text-white">
   {% for edu in education_entries %}
   <h2>{{ edu.degree }}</h2>
   <h3>{{ edu.institution }}</h3>
