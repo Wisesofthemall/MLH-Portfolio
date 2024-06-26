@@ -6,6 +6,17 @@ from app.info import context
 load_dotenv()
 app = Flask(__name__)
 
+
+"""
+    View function for each route. (e.g. /, /about, /work, /hobby, /education)
+
+    Renders the html template with the 'context' dictionary and the 'URL' environment variable.
+
+    Returns:
+        Rendered HTML template.
+"""
+
+# Define routes and corresponding view functions
 @app.route('/')
 def index():
     return render_template('index.html', **context, url=os.getenv("URL"))

@@ -24,6 +24,7 @@
 
   <body>
     <header class="nav-bar">
+      <!-- Logo with link to home -->
       <div class="nav-content">
         <a href="/">
           <div class="nav-logo">
@@ -33,6 +34,7 @@
       </div>
     </header>
     <div class="nav-content">
+      <!-- Main Navigation Links -->
       <nav class="main-nav">
         <ul class="nav">
           <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -43,7 +45,7 @@
         </ul>
       </nav>
     </div>
-
+    <!-- Profile Section -->
     <div class="profile">
       <div id="profile-picture" class="profile-picture">
         <img src="./static/img/logo.jpg" />
@@ -51,19 +53,25 @@
       <h1>{{ title }}</h1>
     </div>
     <hr />
+    <!-- About Section -->
     <div class="about section">{% include "about.html" %}</div>
     <hr />
+    <!-- Work Experience Section -->
     <div class="work section">{% include "work.html" %}</div>
     <hr />
+    <!-- Hobby Section -->
     <div class="hobby section">{% include "hobby.html" %}</div>
     <hr />
+    <!-- Education Section -->
     <div class="education">{% include "education.html" %}</div>
     <hr />
     <div class="places section">
+      <!-- Places Section -->
       <h1>{{places}}</h1>
       <div id="places" class="profile-picture">
         <h2>United States</h2>
         <div class="img">
+          <!--Map Image -->
           <img class="map" src="./static/img/Map.png" />
         </div>
         <p>
