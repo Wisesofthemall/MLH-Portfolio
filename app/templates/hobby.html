@@ -2,7 +2,9 @@
 <div id="hobbies" class="profile-picture">
   {% for hobby in hobbies %}
   <h2>{{ hobby.name }}</h2>
-  <img src="{{ hobby.image }}" />
+  {% for image in hobby.image%}
+  <img src="{{ image }}" />
+  {% endfor %}
   <p>{{ hobby.description }}</p>
   {% endfor %}
 </div>

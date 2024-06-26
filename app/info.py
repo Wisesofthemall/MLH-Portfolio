@@ -29,12 +29,12 @@ context = {
         'hobbies': [
             {
                 'name': 'Binge Watching',
-                'image': './static/img/Power Book II.jpeg',
+                'image': ['./static/img/Power Book II.jpeg'],
                 'description': 'I enjoy watching a variety of topics on Netflix, from science fiction to action. My favorite book is "Power Book II".'
             },
             {
                 'name': 'Gaming',
-                'image': './static/img/Brawlhalla.jpeg',
+                'image': ['./static/img/Brawlhalla.jpeg', './static/img/Madden.jpeg', './static/img/2k24.jpeg'],
                 'description': 'I love playing multiplayer games with my friends. Some of the games I love to play include Brawlhalla, Madden, and 2k24.'
             }
         ],
