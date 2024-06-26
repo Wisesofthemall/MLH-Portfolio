@@ -41,99 +41,50 @@
     </div>
     <hr />
     <div class="about section">
-      <h1>{{about}}</h1>
+      <h1>{{about.name}}</h1>
       <div id="about-yourself" class="profile-picture">
-        From the moment coding was first introduced to me in elementary school,
-        I knew I had found my passion. I was mesmerized watching a programmer
-        demonstrate how lines of code could control sprites to simulate an Angry
-        Birds game. In that moment, my desire to master this magical power was
-        ignited. I jumped at every opportunity to build on my newfound passion.
-        In high school, I eagerly enrolled in programming electives where my
-        skills progressed by leaps and bounds. I relished challenges like using
-        code to direct robots through mazes and compete in races. My curiosity
-        led me to experiment on my own time as well. I created web apps, dove
-        deep into data structures and HTML/CSS through an AP course, and even
-        managed to take the same class twice undetected because I couldn't get
-        enough. Driven by curiosity, I branched into mobile game development and
-        published my first 2D multiplayer shooter at just 17 years old. Though
-        From an early introduction to coding in elementary school, I discovered
-        my passion for programming. Watching a programmer control sprites in an
-        Angry Birds simulation sparked my desire to master coding. Throughout
-        high school, I eagerly took programming electives, tackled challenges
-        like directing robots, and experimented with web apps, data structures,
-        and HTML/CSS. My curiosity led me to mobile game development, and at 17,
-        I published my first 2D multiplayer shooter. Despite initial rejection
-        from the Play Store due to my age, I resubmitted on my 18th birthday,
-        successfully launching my app. I expanded my skills to backend
-        technologies, building comprehensive web applications. Now, as a CS
-        Major, I continue to pursue my passion with the same enthusiasm, driven
-        by the milestones I've achieved and the lessons I've learned. My journey
-        has just begun, and I am excited to grow further into the software
-        engineer I've always aspired to be.
+        {{about.info}}
+
+
       </div>
     </div>
     <hr />
     <div class="work section">
       <h1>{{work}}</h1>
       <div id="work-experience" class="profile-picture">
-        <h2>Site Reliability Engineer</h2>
-        <h3>MLH Fellowship</h3>
-
-        <h5>June 2024 - Sep 2024</h5>
-        <p>- Developed an open-source web app with Python, Flask</p>
-        <p>
-          - Completed a 12-week SRE curriculum, supplemented with events and
-          workshops by Meta engineers,
-        </p>
-
-        <h2>Tech Fellow</h2>
-        <h3>CodePath</h3>
-
-        <h5>May 2024 - Aug 2024</h5>
-        <p>
-          - Answered 100+ technical questions on Slack and during breakout
-          sessions
-        </p>
-        <p>
-          - Taught in 30+ breakout room sessions and encouraging the use of the
-          UMPIRE method, resulting in a 70% improvement in problem-solving
-          efficiency
-        </p>
+        {% for experience in work_experiences %}
+        <h2>{{ experience.title }}</h2>
+        <h3>{{ experience.company }}</h3>
+        <h5>{{ experience.start_date }} - {{ experience.end_date }}</h5>
+        <ul>
+          {% for responsibility in experience.responsibilities %}
+          <li>{{ responsibility }}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
       </div>
     </div>
     <hr />
     <div class="hobby section">
       <h1>{{hobby}}</h1>
       <div id="hobbies" class="profile-picture">
-        <h2>Binge Watching</h2>
-        <img src="./static/img/Power Book II.jpeg" />
-        <p>
-          I enjoy watching a variety of topics on Netflix, from science fiction
-          to action. My favorite book is "Power Book II".
-        </p>
-        <h2>Gaming</h2>
-        <div class="images">
-          <img src="./static/img/Brawlhalla.jpeg" />
-          <img src="./static/img/Madden.jpeg" />
-          <img src="./static/img/2k24.jpeg" />
-        </div>
-        <p>
-          I love playing multiplayer games with my friends. Some of the games I
-          love to play includes Brawlhalla, Madden and 2k24
-        </p>
+        {% for hobby in hobbies %}
+        <h2>{{ hobby.name }}</h2>
+        <img src="{{ hobby.image }}" />
+        <p>{{ hobby.description }}</p>
+        {% endfor %}
       </div>
     </div>
     <hr/>
     <div class="education">
       <h1>{{education}}</h1>
       <div id="education" class="profile-picture">
-        <h2>Computer Science Major</h2>
-        <h3>University of Tampa, Tampa FL</h3>
-        <h5>Expected Graduation: 2026</h5>
-        <p>
-          - Relevant Coursework: Data Structures and Algorithms, Discrete Math,
-          Computer Architecture, Operating Systems, Software Engineering
-        </p>
+        {% for edu in education_entries %}
+        <h2>{{ edu.degree }}</h2>
+        <h3>{{ edu.institution }}</h3>
+        <h5>{{ edu.graduation_date }}</h5>
+        <p>{{ edu.details }}</p>
+        {% endfor %}
 
     </div>
     <hr />
