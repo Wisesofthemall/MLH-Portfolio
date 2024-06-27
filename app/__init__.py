@@ -40,3 +40,6 @@ def education():
 @app.route('/place')
 def place():
     return render_template('place.html', **context, url=os.getenv("URL"))
+
+def navbar():
+    return render_template('navbar.html', **context, url=os.getenv("URL"))
