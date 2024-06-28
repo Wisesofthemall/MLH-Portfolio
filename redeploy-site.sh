@@ -1,23 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 
-tmux attach-session -t $(tmux display-message -p '#S')
+SESSION_NAME="Flask server"
 
-cd ~/MLH-Portfolio
-echo "Changed directory to ~/MLH-Portfolio"
+# Check if tmux session exists, otherwise create a new one
+if ! tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    tmux new-session -d -s "$SESSION_NAME"
+fi
 
-git fetch && git reset origin/main --hard
-echo "Pulled latest changes from GitHub"
+# Attach to the tmux session
+tmux attach-session -t "$SESSION_NAME"
 
-chmod +x python3-virtualenv/bin/activate
-echo "Adding execute permissions to activate script"
+# Commands to execute after attaching to tmux session
+cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
 
-source python3-virtualenv/bin/activate
-echo "Activated Python virtual environment"
+git fetch && git reset origin/main --hard && echo "Pulled latest changes from GitHub"
 
-pip install -r requirements.txt
-echo "Installed latest dependencies"
+chmod +x python3-virtualenv/bin/activate && echo "Adding execute permissions to activate script"
 
-flask run --host=0.0.0.0
-echo "Started Flask server"
+source python3-virtualenv/bin/activate && echo "Activated Python virtual environment"
+
+pip install -r requirements.txt && echo "Installed latest dependencies"
+
+flask run --host=0.0.0.0 && echo "Started Flask server"
 
 echo "Site redeployed successfully!"
