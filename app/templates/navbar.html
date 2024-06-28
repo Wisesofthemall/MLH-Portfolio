@@ -1,29 +1,48 @@
-<div class="bg-gray-800 p-4 margin-top[-30px] left-0 right-0">
-  <!-- Main Navigation Links -->
-  <nav class="container mx-auto">
-    <ul class="flex space-x-4 text-white">
-      <li>
-        <a href="{{ url_for('index') }}" class="hover:text-gray-400">Home</a>
-      </li>
-      <li>
-        <a href="{{ url_for('about') }}" class="hover:text-gray-400">About</a>
-      </li>
-      <li>
-        <a href="{{ url_for('work') }}" class="hover:text-gray-400"
-          >Work Experience</a
-        >
-      </li>
-      <li>
-        <a href="{{ url_for('hobby') }}" class="hover:text-gray-400">Hobbies</a>
-      </li>
-      <li>
-        <a href="{{ url_for('education') }}" class="hover:text-gray-400"
-          >Education</a
-        >
-      </li>
-      <li>
-        <a href="{{ url_for('place') }}" class="hover:text-gray-400">Place</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta property="og:title" content="Personal Portfolio" />
+  <meta property="og:description" content="My Personal Portfolio" />
+  <meta property="og:url" content="{{ url }}" />
+
+  <!-- Preconnect to external resources -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./static/styles/main.css" />
+  <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+  <title>{{ title }}</title>
+</head>
+
+<body>
+  <header class="bg-gray-800 p-4 mt-[-30px] left-0 right-0">
+    <nav class="container mx-auto">
+      <ul class="flex space-x-4 text-white">
+        <li>
+          <a href="{{ url_for('index') }}" class="hover:text-gray-400">Home</a>
+        </li>
+        <li>
+          <a href="{{ url_for('about') }}" class="hover:text-gray-400">About</a>
+        </li>
+        <li>
+          <a href="{{ url_for('work') }}" class="hover:text-gray-400">Work Experience</a>
+        </li>
+        <li>
+          <a href="{{ url_for('hobby') }}" class="hover:text-gray-400">Hobbies</a>
+        </li>
+        <li>
+          <a href="{{ url_for('education') }}" class="hover:text-gray-400">Education</a>
+        </li>
+        <li>
+          <a href="{{ url_for('place') }}" class="hover:text-gray-400">Travel</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>

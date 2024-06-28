@@ -10,7 +10,7 @@ button {
 }
 
 body {
-  background-color: #1c539f;
+  background-color: #2485af;
   background-size: cover;
   width: auto;
   overflow-x: hidden;
@@ -21,7 +21,7 @@ body {
 .nav-bar {
   width: 100%;
   display: inline-block;
-  background-color: #1c539f;
+  background-color: #2485af;
   font-family: "Roboto", serif;
   font-weight: 700 !important;
 }
@@ -56,7 +56,7 @@ body {
 }
 
 .profile {
-  background-color: #1d539f !important;
+  background-color: #2485af !important;
   text-align: center;
   height: 320px;
   margin-bottom: 50px;
@@ -86,7 +86,7 @@ body {
 .banner {
   padding: 20px 0px 50px 0px;
   height: 150px;
-  background-color: #1d539f;
+  background-color: #2485af;
 }
 
 .banner .logo {
@@ -103,21 +103,21 @@ body {
 }
 
 .about {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   padding-left: 30px;
   padding-right: 30px;
 }
 
 .work {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   padding-left: 30px;
   padding-right: 30px;
 }
 
 .hobby {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   padding-left: 30px;
   padding-right: 30px;
@@ -129,7 +129,7 @@ body {
 }
 
 .education {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   padding-left: 30px;
   padding-right: 30px;
@@ -145,14 +145,14 @@ body {
 }
 
 .places {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   padding-left: 30px;
   padding-right: 30px;
 }
 
 .nav {
-  background-color: #1d539f;
+  background-color: #2485af;
   color: white;
   width: 200px;
   margin-right: auto;

@@ -1,52 +1,56 @@
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <meta property="og:title" content="Personal Portfolio" />
-  <meta property="og:description" content="My Personal Portfolio" />
-  <meta property="og:url" content="{{ url }}" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta property="og:title" content="Personal Portfolio" />
+    <meta property="og:description" content="My Personal Portfolio" />
+    <meta property="og:url" content="{{ url }}" />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-  <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
-  <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
-  <title>{{ title }}</title>
-</head>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <title>{{ title }}</title>
+  </head>
 
-<header class="nav-bar">
-  {% include 'navbar.html' %}
-  <!-- Logo with link to home -->
-  <div class="nav-content">
-    <a href="/">
-      <div class="nav-logo">
-        <img src="./static/img/logo.svg" />
-      </div>
-    </a>
-  </div>
-</header>
-<h1 class="text-white text-4xl font-bold">{{work}}</h1>
-<hr />
-<div id="work-experience" class="profile-picture text-white">
-  {% for experience in work_experiences %}
-  <h2>{{ experience.title }}</h2>
-  <h3>{{ experience.company }}</h3>
-  <h5>{{ experience.start_date }} - {{ experience.end_date }}</h5>
-  <ul>
-    {% for responsibility in experience.responsibilities %}
-    <li>{{ responsibility }}</li>
-    {% endfor %}
-  </ul>
-  <hr />
-  {% endfor %}
-</div>
+  <body>
+    <header class="nav-bar">
+      <nav class="nav-content">
+        {% include 'navbar.html' %}
+        <a href="/" aria-label="Homepage">
+          <div class="nav-logo">
+            <img src="./static/img/logo.svg" alt="Logo" />
+          </div>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="work-experience text-white">
+        <h1 class="text-4xl font-bold">{{ work }}</h1>
+        <hr />
+        <div id="work-experience" class="profile-picture">
+          {% for experience in work_experiences %}
+          <article>
+            <h2 class="text-3xl font-semibold">{{ experience.title }}</h2>
+            <h3 class="text-2xl font-medium">{{ experience.company }}</h3>
+            <p class="text-lg">{{ experience.start_date }} - {{ experience.end_date }}</p>
+            <ul class="list-disc pl-5">
+              {% for responsibility in experience.responsibilities %}
+              <li>{{ responsibility }}</li>
+              {% endfor %}
+            </ul>
+            <hr />
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
