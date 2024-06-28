@@ -1,7 +1,11 @@
 #!/bin/sh
 
-tmux attach-session -t $(tmux display-message -p '#S')
+if ! tmux has-session -t mysession; then
+    tmux new-session -d -s mysession
+fi
 
+# Attach to the tmux session
+tmux attach-session -t mysession
 
 cd ~/MLH-Portfolio
 echo "Changed directory to ~/MLH-Portfolio"
