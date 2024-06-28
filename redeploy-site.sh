@@ -8,6 +8,9 @@ echo "Changed directory to ~/MLH-Portfolio"
 git fetch && git reset origin/main --hard
 echo "Pulled latest changes from GitHub"
 
+chmod +x python3-virtualenv/bin/activate
+echo "Adding execute permissions to activate script"
+
 source python3-virtualenv/bin/activate
 echo "Activated Python virtual environment"
 
