@@ -19,7 +19,7 @@ app = Flask(__name__)
 @app.route('/deploy', methods=['POST'])
 def deploy():
     if request.method == 'POST':
-        os.system('../redeploy-site.sh')
+        os.system('./redeploy-site.sh')
         return 'Deployment initiated', 200
 
 # Define routes and corresponding view functions
