@@ -17,6 +17,7 @@ kill_flask_process() {
         echo "Flask process found on port 5000. Killing it..."
         kill -9 $(lsof -ti :5000)
     fi
+    sleep 2
 }
 
 # Attempt to kill existing Flask process before starting a new one
@@ -34,6 +35,7 @@ retry_count=0
 max_retries=3
 
 while [ $retry_count -lt $max_retries ]; do
+    kill_flask_process
     start_flask_server
     if ps -p $flask_pid > /dev/null; then
         echo "Started Flask server"
