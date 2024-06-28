@@ -15,6 +15,12 @@ app = Flask(__name__)
     Returns:
         Rendered HTML template.
 """
+# Deploy route to check any changes in the repository
+@app.route('/deploy', methods=['POST'])
+def deploy():
+    if request.method == 'POST':
+        os.system('../redeploy-site.sh')
+        return 'Deployment initiated', 200
 
 # Define routes and corresponding view functions
 @app.route('/')
