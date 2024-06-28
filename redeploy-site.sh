@@ -1,14 +1,6 @@
 #!/bin/bash
 
-SESSION_NAME="Flask server"
 
-# Check if tmux session exists, otherwise create a new one
-if ! tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-    tmux new-session -d -s "$SESSION_NAME"
-fi
-
-# Attach to the tmux session
-tmux attach-session -t "$SESSION_NAME"
 
 # Commands to execute after attaching to tmux session
 cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
