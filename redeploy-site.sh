@@ -22,20 +22,31 @@ kill_flask_process() {
 # Attempt to kill existing Flask process before starting a new one
 kill_flask_process
 
-# Start Flask and capture its process ID
-flask run --host=0.0.0.0 &
-flask_pid=$!
+# Function to start Flask server
+start_flask_server() {
+    flask run --host=0.0.0.0 &
+    flask_pid=$!
+    sleep 5  # Adjust this wait time as needed
+}
 
-# Wait for Flask to start (optional)
-sleep 5  # Adjust this wait time as needed
+# Try starting Flask server with retries
+retry_count=0
+max_retries=3
 
-# Check if Flask process is still running
-if ps -p $flask_pid > /dev/null; then
-    echo "Started Flask server"
+while [ $retry_count -lt $max_retries ]; do
+    start_flask_server
+    if ps -p $flask_pid > /dev/null; then
+        echo "Started Flask server"
+        break
+    else
+        echo "Failed to start Flask server. Retrying..."
+        retry_count=$((retry_count + 1))
+    fi
+done
+
+# Check if Flask started successfully
+if [ $retry_count -eq $max_retries ]; then
+    echo "Error: Maximum retries reached. Flask server failed to start."
 else
-    echo "Error: Flask server failed to start"
+    echo "Site redeployed successfully!"
 fi
-
-
-
-echo "Site redeployed successfully!"
