@@ -28,10 +28,10 @@ kill_flask_process
 start_flask_server() {
     flask run --host=0.0.0.0 &
     flask_pid=$!
-    sleep 5  # Adjust this wait time as needed
+    sleep 5 # Wait for Flask to start
 }
 
-# Retry logic with explicit wait and kill process retry
+# Retry logic to start Flask server
 max_retries=3
 retry_count=0
 flask_started=false
