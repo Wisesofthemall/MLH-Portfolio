@@ -12,7 +12,7 @@ source python3-virtualenv/bin/activate && echo "Activated Python virtual environ
 pip install -r requirements.txt && echo "Installed latest dependencies"
 
 dnf install lsof && echo "Installed lsof package"
-# Function to kill Flask process on port 5000 if it exists
+
 # Function to kill Flask process on port 5000 if it exists
 kill_flask_process() {
     if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null ; then
