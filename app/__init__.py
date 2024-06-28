@@ -25,7 +25,7 @@ def deploy():
 
 # Define routes and corresponding view functions
 @app.route('/')
-df index():
+def index():
     return render_template('index.html', **context, url=os.getenv("URL"))
 
 @app.route('/about')
