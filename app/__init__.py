@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from app.info import context
-
+import time
 load_dotenv()
 app = Flask(__name__)
 
@@ -19,12 +19,17 @@ app = Flask(__name__)
 @app.route('/deploy', methods=['POST'])
 def deploy():
     if request.method == 'POST':
+        start_time = time.time()  # Start the timer
         exit_status = os.system('chmod +x ./run_test.sh && ./run_test.sh')
         if exit_status != 0:
-            return 'Error: Falied CI Pipeline', 500
+            elapsed_time = time.time() - start_time
+            print(f'Error: Failed CI Pipeline in {elapsed_time:.2f} seconds', 500)
+            return f'Error: Failed CI Pipeline in {elapsed_time:.2f} seconds', 500
         os.system('chmod +x ./redeploy-site.sh')
         os.system('./redeploy-site.sh')
-        return 'Deployment initiated', 200
+        elapsed_time = time.time() - start_time  # Calculate elapsed time
+        print(f'Deployment initiated and completed in {elapsed_time:.2f} seconds', 200)
+        return f'Deployment initiated and completed in {elapsed_time:.2f} seconds', 200
 
 # Define routes and corresponding view functions
 @app.route('/')
