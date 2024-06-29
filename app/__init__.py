@@ -19,6 +19,9 @@ app = Flask(__name__)
 @app.route('/deploy', methods=['POST'])
 def deploy():
     if request.method == 'POST':
+        exit_status = os.system('chmod +x ./test.sh && ./run_test.sh')
+        if exit_status != 0:
+            return 'Error: Flask server failed to start', 500
         os.system('chmod +x ./redeploy-site.sh')
         os.system('./redeploy-site.sh')
         return 'Deployment initiated', 200
