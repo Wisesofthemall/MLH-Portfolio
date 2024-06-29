@@ -32,7 +32,7 @@ start_flask_server() {
 }
 
 # Retry logic to start Flask server
-max_retries=3
+max_retries=1
 retry_count=0
 flask_started=false
 
