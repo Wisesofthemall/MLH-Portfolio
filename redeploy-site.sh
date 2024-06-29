@@ -28,7 +28,7 @@ kill_flask_process
 start_flask_server() {
     flask run --host=0.0.0.0 &
     flask_pid=$!
-    sleep 5 # Wait for Flask to start
+    sleep 2 # Wait for Flask to start
 }
 
 # Retry logic to start Flask server
@@ -38,7 +38,7 @@ flask_started=false
 
 while [ $retry_count -lt $max_retries ]; do
     start_flask_server
-    sleep 5  # Wait for Flask to start
+    sleep 2  # Wait for Flask to start
     if ps -p $flask_pid > /dev/null; then
         echo "Starting Production Flask server"
         flask_started=true
