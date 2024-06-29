@@ -1,5 +1,6 @@
 #!/bin/bash
 
+start_time=$(date +%s)
 # Commands to execute after attaching to tmux session
 cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
 
@@ -48,13 +49,16 @@ while [ $retry_count -lt $max_retries ]; do
     fi
 done
 
+end_time=$(date +%s)
+elapsed=$((end_time - start_time))
 # Check if Flask started successfully
 if ! $flask_started; then
     echo "Failed CI Pipline. could not start Testing Flask server."
-
+    echo "CI Pipeline Execution time: $elapsed seconds"
     exit 1
 else
     echo "Site passed CI Pipline!"
     kill_flask_process # Ensure any lingering Flask process is killed
+    echo "CI Pipeline Execution time: $elapsed seconds"
     exit 0
 fi

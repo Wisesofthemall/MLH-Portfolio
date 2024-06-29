@@ -1,19 +1,6 @@
 #!/bin/bash
 
-# Commands to execute after attaching to tmux session
-# cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
-
-# git fetch && git reset origin/main --hard && echo "Pulled latest changes from GitHub"
-
-# chmod +x python3-virtualenv/bin/activate && echo "Adding execute permissions to activate script"
-
-# source python3-virtualenv/bin/activate && echo "Activated Python virtual environment"
-
-# pip install -r requirements.txt && echo "Installed latest dependencies"
-
-# dnf install lsof && echo "Installed lsof package"
-
-# Function to kill Flask process on port 5000 if it exists
+start_time=$(date +%s)
 kill_flask_process() {
     if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null ; then
         echo "Killing exisiting Production Flask server..."
@@ -50,9 +37,13 @@ while [ $retry_count -lt $max_retries ]; do
     fi
 done
 
+end_time=$(date +%s)
+elapsed=$((end_time - start_time))
 # Check if Flask started successfully
 if ! $flask_started; then
     echo "Error: Maximum retries reached. Production Flask server failed to start."
+    echo "CD Pipeline Execution time: $elapsed seconds"
 else
     echo "Site redeployed successfully!"
+    echo "CD Pipeline Execution time: $elapsed seconds"
 fi
