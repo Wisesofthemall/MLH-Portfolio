@@ -26,7 +26,7 @@ kill_flask_process
 
 # Function to start Flask server
 start_flask_server() {
-    flask run --host=0.0.0.0 &
+    flask run --host=0.0.0.0 --port=5001 &
     flask_pid=$!
     sleep 5 # Wait for Flask to start
 }
@@ -52,7 +52,7 @@ done
 
 # Check if Flask started successfully
 if ! $flask_started; then
-    echo "Error: Maximum retries reached. Flask server failed to start."
+    echo "Error: Maximum retries reached. Failed CI Pipline."
     exit 1
 else
     echo "Site passed CI Pipline!"
