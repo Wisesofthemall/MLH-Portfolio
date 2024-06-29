@@ -16,7 +16,7 @@ dnf install lsof && echo "Installed lsof package"
 # Function to kill Flask process on port 5000 if it exists
 kill_flask_process() {
     if lsof -Pi :5001 -sTCP:LISTEN -t >/dev/null ; then
-        echo "Flask process found on port 5001. Killing it..."
+        echo "Killing exisiting Testing Flask server..."
         kill -9 $(lsof -ti :5001)
     fi
 }
@@ -28,7 +28,7 @@ kill_flask_process
 start_flask_server() {
     flask run --host=0.0.0.0 --port=5001 &
     flask_pid=$!
-    sleep 5 # Wait for Flask to start
+    sleep 3 # Wait for Flask to start
 }
 
 # Retry logic to start Flask server
@@ -38,7 +38,7 @@ flask_started=false
 
 while [ $retry_count -lt $max_retries ]; do
     start_flask_server
-    sleep 5  # Wait for Flask to start
+    sleep 3 # Wait for Flask to start
     if ps -p $flask_pid > /dev/null; then
         echo "Started Testing Flask server"
         flask_started=true
