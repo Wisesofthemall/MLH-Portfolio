@@ -23,12 +23,12 @@ def deploy():
         exit_status = os.system('chmod +x ./run_test.sh && ./run_test.sh')
         if exit_status != 0:
             elapsed_time = time.time() - start_time
-            print(f'Error: Failed CI Pipeline in {elapsed_time:.2f} seconds', 500)
+            os.system(f'echo "Error: Failed CI Pipeline in {elapsed_time:.2f} seconds"', 500)
             return f'Error: Failed CI Pipeline in {elapsed_time:.2f} seconds', 500
         os.system('chmod +x ./redeploy-site.sh')
         os.system('./redeploy-site.sh')
         elapsed_time = time.time() - start_time  # Calculate elapsed time
-        print(f'Deployment initiated and completed in {elapsed_time:.2f} seconds', 200)
+        os.system(f'echo "Deployment initiated and completed in {elapsed_time:.2f} seconds"', 200)
         return f'Deployment initiated and completed in {elapsed_time:.2f} seconds', 200
 
 # Define routes and corresponding view functions
