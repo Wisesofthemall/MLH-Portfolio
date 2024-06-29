@@ -16,7 +16,7 @@
 # Function to kill Flask process on port 5000 if it exists
 kill_flask_process() {
     if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null ; then
-        echo "Flask process found on port 5000. Killing it..."
+        echo "Killing exisiting Production Flask server..."
         kill -9 $(lsof -ti :5000)
     fi
 }

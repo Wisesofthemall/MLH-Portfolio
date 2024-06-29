@@ -55,7 +55,6 @@ if ! $flask_started; then
     exit 1
 else
     echo "Site passed CI Pipline!"
-    echo "Killing Testing Flask server."
     kill_flask_process # Ensure any lingering Flask process is killed
     exit 0
 fi
