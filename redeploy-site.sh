@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Commands to execute after attaching to tmux session
-cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
+# cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
 
-git fetch && git reset origin/main --hard && echo "Pulled latest changes from GitHub"
+# git fetch && git reset origin/main --hard && echo "Pulled latest changes from GitHub"
 
-chmod +x python3-virtualenv/bin/activate && echo "Adding execute permissions to activate script"
+# chmod +x python3-virtualenv/bin/activate && echo "Adding execute permissions to activate script"
 
-source python3-virtualenv/bin/activate && echo "Activated Python virtual environment"
+# source python3-virtualenv/bin/activate && echo "Activated Python virtual environment"
 
-pip install -r requirements.txt && echo "Installed latest dependencies"
+# pip install -r requirements.txt && echo "Installed latest dependencies"
 
-dnf install lsof && echo "Installed lsof package"
+# dnf install lsof && echo "Installed lsof package"
 
 # Function to kill Flask process on port 5000 if it exists
 kill_flask_process() {
