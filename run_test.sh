@@ -53,9 +53,11 @@ done
 # Check if Flask started successfully
 if ! $flask_started; then
     echo "Error: Maximum retries reached. Failed CI Pipline."
-    kill_flask_process # Ensure any lingering Flask process is killed
+
     exit 1
 else
     echo "Site passed CI Pipline!"
+    echo "Killing Test Flask server."
+    kill_flask_process # Ensure any lingering Flask process is killed
     exit 0
 fi
