@@ -40,11 +40,10 @@ while [ $retry_count -lt $max_retries ]; do
     start_flask_server
     sleep 5  # Wait for Flask to start
     if ps -p $flask_pid > /dev/null; then
-        echo "Started Flask server"
+        echo "Started Testing Flask server"
         flask_started=true
         break
     else
-        echo "Failed to start Flask server. Retrying..."
         retry_count=$((retry_count + 1))
         kill_flask_process  # Ensure any lingering Flask process is killed
     fi
@@ -52,12 +51,12 @@ done
 
 # Check if Flask started successfully
 if ! $flask_started; then
-    echo "Error: Maximum retries reached. Failed CI Pipline."
+    echo "Failed CI Pipline. could not start Testing Flask server."
 
     exit 1
 else
     echo "Site passed CI Pipline!"
-    echo "Killing Test Flask server."
+    echo "Killing Testing Flask server."
     kill_flask_process # Ensure any lingering Flask process is killed
     exit 0
 fi

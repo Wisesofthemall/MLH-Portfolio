@@ -40,11 +40,11 @@ while [ $retry_count -lt $max_retries ]; do
     start_flask_server
     sleep 5  # Wait for Flask to start
     if ps -p $flask_pid > /dev/null; then
-        echo "Started Flask server"
+        echo "Started Production Flask server"
         flask_started=true
         break
     else
-        echo "Failed to start Flask server. Retrying..."
+        echo "Failed to start Production Flask server. Retrying..."
         retry_count=$((retry_count + 1))
         kill_flask_process  # Ensure any lingering Flask process is killed
     fi
@@ -52,7 +52,7 @@ done
 
 # Check if Flask started successfully
 if ! $flask_started; then
-    echo "Error: Maximum retries reached. Flask server failed to start."
+    echo "Error: Maximum retries reached. Production Flask server failed to start."
 else
     echo "Site redeployed successfully!"
 fi
