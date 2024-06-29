@@ -45,7 +45,6 @@ while [ $retry_count -lt $max_retries ]; do
         break
     else
         retry_count=$((retry_count + 1))
-        kill_flask_process  # Ensure any lingering Flask process is killed
     fi
 done
 

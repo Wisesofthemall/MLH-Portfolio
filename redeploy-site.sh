@@ -40,7 +40,7 @@ while [ $retry_count -lt $max_retries ]; do
     start_flask_server
     sleep 5  # Wait for Flask to start
     if ps -p $flask_pid > /dev/null; then
-        echo "Started Production Flask server"
+        echo "Starting Production Flask server"
         flask_started=true
         break
     else
