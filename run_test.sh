@@ -53,12 +53,13 @@ end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 # Check if Flask started successfully
 if ! $flask_started; then
-    echo "Failed CI Pipline. could not start Testing Flask server."
-    echo "CI Pipeline Execution time: $elapsed seconds"
+    echo -e "\033[31mFailed CI Pipeline. Could not start Testing Flask server.\033[0m" # Red color
+    echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # Orange color
+
     exit 1
 else
-    echo "Site passed CI Pipline!"
+    echo -e "\033[32mSite passed CI Pipeline!\033[0m"
     kill_flask_process # Ensure any lingering Flask process is killed
-    echo "CI Pipeline Execution time: $elapsed seconds"
+    echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # Orange color
     exit 0
 fi
