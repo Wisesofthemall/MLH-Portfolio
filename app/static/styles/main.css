@@ -134,9 +134,8 @@ body {
   padding-left: 30px;
   padding-right: 30px;
 }
-.map {
-  width: 600px;
-  height: 400px;
+#map {
+  height: 540px;
 }
 .img {
   justify-content: center;

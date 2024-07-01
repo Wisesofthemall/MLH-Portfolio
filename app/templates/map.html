@@ -1,0 +1,32 @@
+<div id="map" style="height: 400px">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <script>
+    var map = L.map("map").setView([51.25, -85.32], 2);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+    }).addTo(map);
+
+    L.marker([30.332184, -81.655647])
+      .addTo(map)
+      .bindPopup("Jacksonville, Florida");
+
+    L.marker([25.761681, -80.191788]).addTo(map).bindPopup("Miami, Florida");
+
+    L.marker([27.94752, -82.45843]).addTo(map).bindPopup("Tampa, Florida");
+
+    L.marker([28.538336, -81.379234]).addTo(map).bindPopup("Orlando, Florida");
+
+    L.marker([26.640629, -81.8723]).addTo(map).bindPopup("Fort Myers, Florida");
+
+    L.marker([30.695366, -88.039894]).addTo(map).bindPopup("Mobile, Alabama");
+
+    L.marker([33.753746, -84.38633]).addTo(map).bindPopup("Atlanta, Georgia");
+
+    L.marker([25.761681, -80.191788])
+      .addTo(map)
+      .bindPopup("Miami, Florida")
+      .openPopup();
+  </script>
+</div>

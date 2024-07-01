@@ -53,3 +53,9 @@ def place():
 
 def navbar():
     return render_template('navbar.html', **context, url=os.getenv("URL"))
+
+def map():
+    return render_template('map.html', **context, url=os.getenv("URL"))
+
+if __name__ == "__main__":
+    app.run(debug=True)
