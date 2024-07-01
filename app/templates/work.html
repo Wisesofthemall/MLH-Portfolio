@@ -1,0 +1,112 @@
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta property="og:title" content="Personal Portfolio" />
+  <meta property="og:description" content="My Personal Portfolio" />
+  <meta property="og:url" content="{{ url }}" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+
+  <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+  <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+  <title>{{ title }}</title>
+</head>
+
+<header class="nav-bar">
+  {% include 'navbar.html' %}
+  <!-- Logo with link to home -->
+  <div class="nav-content">
+    <a href="/">
+      <div class="nav-logo">
+        <img src="./static/img/logo.svg" />
+      </div>
+    </a>
+  </div>
+</header>
+<h1 class="text-white text-4xl font-bold">{{work}}</h1>
+<hr />
+<section class="container py-5  text-white">
+  {% for experience in work_experiences %}
+  <h3 class="text-xl font-bold mb-2">{{ experience.title }}</h3>
+  <h2>{{ experience.company }}</h3>
+  <p>{{ experience.start_date }} - {{ experience.end_date }}</p>
+
+  <ul>
+    {% for responsibility in experience.responsibilities %}
+    <li>{{ responsibility }}</li>
+    {% endfor %}
+  </ul>
+  <hr />
+  {% endfor %}
+
+
+</section>
+<section class="container py-5 text-white ">
+  <h2 class="text-2xl font-bold mb-8 md:text-3xl">My Projects</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10">
+    <a class="group" href="https://github.com/Wisesofthemall/Netfloo-2.0">
+      <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+        <img
+          src="./static/img/thumb1.png"
+          alt="Project 1"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          width="400"
+          height="300"
+          style="aspect-ratio: 400 / 300; object-fit: cover"
+        />
+        <div
+          class="absolute inset-0 bg-muted/50 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          <h3 class="text-lg font-bold text-primary-foreground">Project 1</h3>
+        </div>
+      </div>
+    </a>
+    <a class="group" href="https://play.google.com/store/apps/details/War_Of_Liberty?id=com.war.liberty.game">
+      <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+        <img
+          src="./static/img/thumb2.png"
+          width="400"
+          height="300"
+          style="aspect-ratio: 400 / 300; object-fit: cover"
+          alt="Project 2"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <div
+          class="absolute inset-0 bg-muted/50 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          <h3 class="text-lg font-bold text-primary-foreground">Project 2</h3>
+        </div>
+      </div>
+    </a>
+    <a class="group" href="https://github.com/Wisesofthemall/Filmzee">
+      <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+        <img
+          src="./static/img/Filmzee.png"
+          alt="Project 3"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          width="400"
+          height="300"
+          style="aspect-ratio: 400 / 300; object-fit: cover"
+        />
+        <div
+          class="absolute inset-0 bg-muted/50 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          <h3 class="text-lg font-bold text-primary-foreground">Project 3</h3>
+        </div>
+      </div>
+    </a>
+
+</section>
+
