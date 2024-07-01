@@ -43,9 +43,11 @@ elapsed=$((end_time - start_time))
 if ! $flask_started; then
     echo -e "\033[31mError: Maximum retries reached. Production Flask server failed to start.\033[0m"
     echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
+    exit 1
 
 else
    echo -e "\033[32mSite redeployed successfully!\033[0m"
    echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
+    exit 0
 
 fi
