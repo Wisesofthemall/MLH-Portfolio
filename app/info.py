@@ -1,6 +1,6 @@
 
 context = {
-        'name': 'Lovinson Dieujuste',
+        'name': 'Lovinson Dieujusteee',
         'role': 'Site Reliability Engineer',
         'title': 'My Personal Portfolio',
         'about': 'From a young age, I was captivated by coding, first discovering my passion in elementary school. Watching a programmer control sprites in an Angry Birds simulation ignited my desire to master this skill. Throughout high school, I enthusiastically enrolled in programming electives, tackled challenges like directing robots, and experimented with web apps, data structures, and HTML/CSS. My curiosity led me to mobile game development, and at 17, I published my first 2D multiplayer shooter. Despite initial rejection from the Play Store due to my age, I successfully launched my app on my 18th birthday. I then expanded my skills to backend technologies, building comprehensive web applications. Now, as a CS major, I continue to pursue my passion with enthusiasm, driven by my achievements and the lessons learned, eager to grow into the software engineer I\'ve always aspired to be. ',
