@@ -46,8 +46,7 @@ if ! $flask_started; then
     exit 1
 
 else
-   echo -e "\033[32mSite redeployed successfully!\033[0m"
-   echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
+    echo -e "\033[32mSite redeployed successfully!\033[0m"
+    echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
     exit 0
-
 fi

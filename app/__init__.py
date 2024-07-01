@@ -22,8 +22,10 @@ def deploy():
         exit_status = os.system('chmod +x ./run_test.sh && ./run_test.sh')
         if exit_status != 0:
             return f'Error: Failed CI Pipeline ', 500
-        os.system('chmod +x ./redeploy-site.sh')
-        os.system('./redeploy-site.sh')
+
+        exit_status = os.system('chmod +x ./redeploy-site.sh && ./redeploy-site.sh')
+        if exit_status != 0:
+            return f'Error: Failed Deployment ', 500
         return f'Deployment initiated ', 200
 
 # Define routes and corresponding view functions
