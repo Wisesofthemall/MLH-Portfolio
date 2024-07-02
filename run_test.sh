@@ -51,6 +51,15 @@ done
 
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
+# Run static analysis
+if pylint app/*.py; then
+    log "Static analysis passed"
+    echo -e "\033[32mStatic analysis passed\033[0m"
+else
+    log "Static analysis failed"
+    exit 1
+fi
+
 # Check if Flask started successfully
 if ! $flask_started; then
     echo -e "\033[31mFailed CI Pipeline. Could not start Testing Flask server.\033[0m" # Red color
