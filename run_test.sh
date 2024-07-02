@@ -59,7 +59,10 @@ else
     exit 1
 fi
 
-if pytest tests/unit; then
+# Run pytest and capture the exit status
+pytest tests/unit
+TEST_STATUS=$?
+if [ $TEST_STATUS -eq 0 ]; then
     echo -e "\033[32mUnit tests passed\033[0m"
 else
     echo -e "\033[31mUnit tests failed\033[0m"
