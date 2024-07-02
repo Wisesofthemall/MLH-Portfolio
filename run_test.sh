@@ -53,10 +53,16 @@ end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 # Run static analysis
 if pylint app/*.py; then
-    log "Static analysis passed"
     echo -e "\033[32mStatic analysis passed\033[0m"
 else
-    log "Static analysis failed"
+    echo -e "\033[31mStatic analysis failed\033[0m"
+    exit 1
+fi
+
+if pytest tests/unit; then
+    echo -e "\033[32mUnit tests passed\033[0m"
+else
+    echo -e "\033[31mUnit tests failed\033[0m"
     exit 1
 fi
 

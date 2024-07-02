@@ -11,3 +11,5 @@ PyMySQL==1.0.2
 python-dotenv==0.17.1
 Werkzeug==2.0.1
 pylint==3.2.5
+pytest==8.2.2
+pytest_mock==3.14.0
