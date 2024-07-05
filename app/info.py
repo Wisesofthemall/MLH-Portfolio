@@ -85,4 +85,33 @@ context = {
         }
     ],
     'places': 'Places',
-}
+    'aboutData':  [
+      {
+        'title': "Frontend",
+        'icons': [ "HTML5", "CSS3", "Javascript", "React", "TailwindCSS", "Next.js",
+                  "Vite.js", "Framer", "Typescript", "Flask"],
+      },
+      {
+        'title': "Backend",
+
+        'icons': [
+           "PostgreSQL", "MongoDB", "MySQL", "Supabase",
+           "Node.js", "C#", "Python", "Prisma", "Nginx"],
+      },
+      {
+        'title': "Testing/Deployment",
+        'icons': [
+
+           "Heroku", "Verce.js", "Aws", "Jest", "Mocha", "Docker"
+        ],
+      },
+      {
+        'title': "Developer Tools",
+        'icons': ["Git", "npm", "Webpack", "Babel", "Jinja", "Prometheus", "Grafana"],
+      },
+      {
+        'title': "Technologies",
+        'icons': ["Unity", "OAuth", "Firebase", "ChakraUI", "Socket.io", "Cloudinary" ],
+      },
+    ],
+  }

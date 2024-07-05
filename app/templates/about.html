@@ -36,6 +36,17 @@
     </a>
   </div>
 </header>
-<h1 class="text-white text-4xl font-bold">{{about.name}}</h1>
+<h1 class="text-white text-4xl font-bold">About</h1>
 <hr />
-<div id="about-yourself" class="profile-picture text-white">{{about.info}}</div>
+<body>
+  {% for section in aboutData %}
+  <div class="section">
+    <h2>{{ section.title }}</h2>
+    <div class="icons">
+      {% for icon in section.icons %}
+      <div class="icon">{{ icon }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</body>
