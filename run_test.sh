@@ -23,7 +23,6 @@ else
 fi
 
 # Run pytest and capture the exit status
-echo "Running unit tests"
 pytest tests/unit
 TEST_STATUS=$?
 if [ $TEST_STATUS -eq 0 ]; then
@@ -33,7 +32,6 @@ else
     exit 1
 fi
 
-echo "Running Database tests"
 chmod +x ./test_db.sh
 ./test_db.sh
 DB_TEST_STATUS=$?
