@@ -43,5 +43,4 @@ elapsed=$((end_time - start_time))
 echo -e "\033[38;5;208mCI ( Database ) Execution time: $elapsed seconds\033[0m" # O
 
 # Exit with success status'
-echo -e "\033[32mDatabase CI Passed\033[0m"
 exit 0

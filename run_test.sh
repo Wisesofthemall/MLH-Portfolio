@@ -36,9 +36,9 @@ chmod +x ./test.sh
 ./test_db.sh
 DB_TEST_STATUS=$?
 if [ $DB_TEST_STATUS -eq 0 ]; then
-    echo -e "\033[32mDatabase tests passed\033[0m"
+    echo -e "\033[32mDatabase CI passed\033[0m"
 else
-    echo -e "\033[31mDatabase tests failed\033[0m"
+    echo -e "\033[31mDatabase CI failed\033[0m"
     exit 1
 fi
 
