@@ -34,5 +34,11 @@ def test_place(client):
     assert rv.status_code == 200
     assert b"Places" in rv.data
 
+def test_feed(client):
+    """Test the place route"""
+    rv = client.get('/feed')
+    assert rv.status_code == 200
+    assert b"Feed" in rv.data
+
 
 

@@ -50,7 +50,10 @@ class TimelinePost(Model):
     content = TextField()
     created_at = DateTimeField(default=datetime.datetime.now)
 
-    class Meta:
+    class Meta: # pylint: disable=too-few-public-methods
+        """
+        Meta class to define the database and table for the model.
+        """
         database = mydb
 
 mydb.connect()
@@ -71,9 +74,13 @@ def timeline():
     if request.method == 'GET':
 
         return {
-            'posts': list(map(model_to_dict, TimelinePost.select().order_by(TimelinePost.created_at.desc()))),
+            'posts': list(
+                map(model_to_dict,
+                    TimelinePost.select().order_by(TimelinePost.created_at.desc())
+                    )
+                ),
         }
-    elif request.method == 'POST':
+    if request.method == 'POST':
         print('the request', request)
         name = request.form['name']
         email = request.form['email']
@@ -81,13 +88,14 @@ def timeline():
 
         post = TimelinePost.create(name=name, email=email, content=content)
         return model_to_dict(post)
-    elif request.method == 'DELETE':
+    if request.method == 'DELETE':
         print('here')
-        ID  = request.args.get('id')
-        print('ID', ID)
-        post = TimelinePost.get_by_id(ID)
+        i_d  = request.args.get('id')
+
+        post = TimelinePost.get_by_id(i_d)
         post.delete_instance()
         return model_to_dict(post)
+    return 'Invalid Request Method ', 405
 
 
 
