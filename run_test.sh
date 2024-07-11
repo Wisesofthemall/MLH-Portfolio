@@ -32,6 +32,16 @@ else
     exit 1
 fi
 
+chmod +x ./test.sh
+./test_db.sh
+DB_TEST_STATUS=$?
+if [ $DB_TEST_STATUS -eq 0 ]; then
+    echo -e "\033[32mDatabase tests passed\033[0m"
+else
+    echo -e "\033[31mDatabase tests failed\033[0m"
+    exit 1
+fi
+
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # Orange color
