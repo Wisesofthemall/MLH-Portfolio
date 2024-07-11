@@ -16,11 +16,80 @@ The view functions render the HTML templates with the 'context' dictionary and
 the 'URL' environment variable.
 """
 import os
+import datetime
+import json
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
+from playhouse.shortcuts import model_to_dict
+from peewee import *
 from app.info import context
+
 load_dotenv()
+
+mydb = MySQLDatabase(
+    os.getenv('MYSQL_DATABASE'),
+    user=os.getenv('MYSQL_USER'),
+    password=os.getenv('MYSQL_PASSWORD'),
+    host=os.getenv('MYSQL_HOST'),
+    port=3306
+)
+
+
+class TimelinePost(Model):
+    """
+    Model class to represent the timeline posts.
+
+    Attributes:
+        name (CharField): Name of the post.
+        email (CharField): Email of the post.
+        content (TextField): Content of the post.
+        date (DateTimeField): Date of the post.
+    """
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.datetime.now)
+
+    class Meta:
+        database = mydb
+
+mydb.connect()
+mydb.create_tables([TimelinePost], safe=True)
 app = Flask(__name__)
+@app.route('/api/timeline', methods=['GET', 'POST', 'DELETE'])
+def timeline():
+    """
+    GET and POST route to fetch and add timeline posts.
+
+    This view function fetches all the timeline posts from the database and
+    returns them as a JSON response. It also adds a new post to the database
+    if the request method is POST.
+
+    Returns:
+        dict: JSON response with the timeline posts.
+    """
+    if request.method == 'GET':
+
+        return {
+            'posts': list(map(model_to_dict, TimelinePost.select().order_by(TimelinePost.created_at.desc()))),
+        }
+    elif request.method == 'POST':
+        print('the request', request)
+        name = request.form['name']
+        email = request.form['email']
+        content = request.form['content']
+
+        post = TimelinePost.create(name=name, email=email, content=content)
+        return model_to_dict(post)
+    elif request.method == 'DELETE':
+        print('here')
+        ID  = request.args.get('id')
+        print('ID', ID)
+        post = TimelinePost.get_by_id(ID)
+        post.delete_instance()
+        return model_to_dict(post)
+
+
 
 @app.route('/deploy', methods=['POST'])
 def deploy():
