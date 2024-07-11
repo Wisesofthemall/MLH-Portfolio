@@ -32,7 +32,7 @@ else
     exit 1
 fi
 
-chmod +x ./test.sh
+chmod +x ./test_db.sh
 ./test_db.sh
 DB_TEST_STATUS=$?
 if [ $DB_TEST_STATUS -eq 0 ]; then
