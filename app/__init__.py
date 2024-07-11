@@ -81,7 +81,6 @@ def timeline():
                 ),
         }
     if request.method == 'POST':
-        print('the request', request)
         name = request.form['name']
         email = request.form['email']
         content = request.form['content']
@@ -89,7 +88,6 @@ def timeline():
         post = TimelinePost.create(name=name, email=email, content=content)
         return model_to_dict(post)
     if request.method == 'DELETE':
-        print('here')
         i_d  = request.args.get('id')
 
         post = TimelinePost.get_by_id(i_d)
