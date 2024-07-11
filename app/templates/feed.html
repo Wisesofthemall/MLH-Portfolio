@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Personal Portfolio" />
+    <meta property="og:description" content="My Personal Portfolio" />
+    <meta property="og:url" content="{{ url }}" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
+    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <title>{{ title }}</title>
+  </head>
+  <body class="bg-[##1d539f]">
+    {% include 'navbar.html' %}
+    <div class="container mx-auto py-8">
+      <h1 class="text-3xl font-bold mb-8">Timeline Feed</h1>
+      <form id="timelineForm" class="mb-8">
+        <div class="mb-4">
+          <label for="name" class="block text-black">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-black">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="content" class="block text-black">Content:</label>
+          <textarea
+            id="content"
+            name="content"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded"
+          ></textarea>
+        </div>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+          Submit
+        </button>
+      </form>
+      <div id="postsContainer">
+        <!-- Timeline posts will be inserted here -->
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("timelineForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          const data = new URLSearchParams(formData);
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const content = document.getElementById("content").value;
+
+          try {
+            const response = await fetch("/api/timeline", {
+              method: "POST",
+              body: data,
+            });
+            const result = await response.json();
+            addPostToDOM(result);
+            document.getElementById("timelineForm").reset();
+          } catch (error) {
+            console.error("Error submitting form", error);
+          }
+        });
+
+      async function fetchPosts() {
+        try {
+          const response = await fetch("/api/timeline");
+          const result = await response.json();
+          console.log("the data", result);
+          const posts = result.posts;
+          posts.forEach((post) => addPostToDOM(post));
+        } catch (error) {
+          console.error("Error fetching posts", error);
+        }
+      }
+      function addPostToDOM(post) {
+        console.log("post", post);
+        const postsContainer = document.getElementById("postsContainer");
+        const postElement = document.createElement("div");
+        postElement.className =
+          "mb-4 p-4 bg-white border border-gray-300 rounded";
+
+        const emailHash = CryptoJS.MD5(post.email.trim().toLowerCase());
+        const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}?s=50&d=identicon`;
+
+        postElement.innerHTML = `
+                <div class="flex items-center mb-2">
+                    <img src="${gravatarUrl}" alt="${
+          post.name
+        }" class="w-10 h-10 rounded-full mr-4">
+                    <div>
+                        <h3 class="text-xl font-bold">${post.name}</h3>
+                        <p class="text-gray-500 text-sm">${new Date(
+                          post.created_at,
+                        ).toLocaleString()}</p>
+                    </div>
+                </div>
+                <p>${post.content}</p>
+            `;
+        postsContainer.prepend(postElement);
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchPosts);
+    </script>
+  </body>
+</html>

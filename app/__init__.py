@@ -192,6 +192,20 @@ def place():
     """
     return render_template('place.html', **context, url=os.getenv("URL"))
 
+@app.route('/feed')
+def feed():
+    """
+    Function to render the feed template.
+
+    This function renders the 'feed.html' template with the 'context'
+    dictionary and the 'URL' environment variable.
+
+    Returns:
+        str: Rendered HTML template.
+    """
+    return render_template('feed.html', **context, url=os.getenv("URL"))
+
+
 def navbar():
     """
     Function to render the navbar template.
