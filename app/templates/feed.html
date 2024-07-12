@@ -76,9 +76,6 @@
           event.preventDefault();
           const formData = new FormData(event.target);
           const data = new URLSearchParams(formData);
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const content = document.getElementById("content").value;
 
           try {
             const response = await fetch("/api/timeline", {
@@ -97,15 +94,14 @@
         try {
           const response = await fetch("/api/timeline");
           const result = await response.json();
-          console.log("the data", result);
-          const posts = result.posts.reverse();
+          const posts = result.posts;
+          posts.reverse();
           posts.forEach((post) => addPostToDOM(post));
         } catch (error) {
           console.error("Error fetching posts", error);
         }
       }
       function addPostToDOM(post) {
-        console.log("post", post);
         const postsContainer = document.getElementById("postsContainer");
         const postElement = document.createElement("div");
         postElement.className =
