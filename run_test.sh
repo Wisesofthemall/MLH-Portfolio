@@ -39,11 +39,11 @@ end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 if [ $DB_TEST_STATUS -eq 0 ]; then
     echo -e "\033[32mDatabase CI passed\033[0m"
-
+    echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # O
     exit 0
 else
     echo -e "\033[31mDatabase CI failed\033[0m"
-
+    echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # O
     exit 1
 fi
 

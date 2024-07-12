@@ -38,9 +38,5 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-end_time=$(date +%s)
-elapsed=$((end_time - start_time))
-echo -e "\033[38;5;208mCI ( Database ) Execution time: $elapsed seconds\033[0m" # O
-
 # Exit with success status'
 exit 0
