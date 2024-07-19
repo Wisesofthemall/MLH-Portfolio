@@ -21,8 +21,8 @@ git pull origin main
 # Start the Flask application in a new tmux session
 echo "Starting Flask application in a new tmux session..."
 tmux new-session -d -s $SESSION_NAME
-tmux send-keys -t $SESSION_NAME 'source venv/bin/activate' C-m  # Adjust if using a different virtual environment setup
+tmux send-keys -t $SESSION_NAME 'source python3-virtualenv/bin/activate' C-m  # Adjust if using a different virtual environment setup
 tmux send-keys -t $SESSION_NAME 'export FLASK_APP=app.py' C-m  # Adjust to your Flask entry point
-tmux send-keys -t $SESSION_NAME 'flask run' C-m
+tmux send-keys -t $SESSION_NAME 'flask run --host=0.0.0.0' C-m
 
 echo "Flask application has been restarted in a new tmux session."
