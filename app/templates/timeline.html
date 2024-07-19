@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline Post</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Submit a Timeline Post</h1>
+    <h1>{{ title }}</h1>
+
+    <!-- Form for submitting new timeline posts -->
+    <h2>Submit a Timeline Post</h2>
     <form action="{{ url_for('post_time_line_post') }}" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -21,10 +24,14 @@
         <input type="submit" value="Submit">
     </form>
 
+    <!-- Display timeline posts -->
     <h2>Timeline Posts</h2>
     <ul>
         {% for post in timeline_posts %}
-            <li><strong>{{ post.name }}</strong> ({{ post.email }}): {{ post.content }} <em>({{ post.created_at }})</em></li>
+            <li>
+                <strong>{{ post.name }}</strong> ({{ post.email }}): {{ post.content }}
+                <em>({{ post.created_at }})</em>
+            </li>
         {% endfor %}
     </ul>
 </body>

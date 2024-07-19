@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <!-- Display timeline posts -->
+    <ul>
+        {% for post in timeline_posts %}
+            <li>
+                <strong>{{ post.name }}</strong> ({{ post.email }}): {{ post.content }}
+                <em>({{ post.created_at }})</em>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
