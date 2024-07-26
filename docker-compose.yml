@@ -1,0 +1,30 @@
+version: "3"
+services:
+  mlh-portfolio:
+    container_name: mlh-portfolio
+    build: .
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    container_name: mlh-portfolio-db
+    image: mariadb
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=3030
+      - MYSQL_USER=lovinson
+      - MYSQL_PASSWORD=01302004
+      - MYSQL_DATABASE=myportfoliodb
+    volumes:
+      - mydatabase:/var/lib/mysql
+
+volumes:
+  mydatabase:
