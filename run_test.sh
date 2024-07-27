@@ -14,9 +14,7 @@ pip install -r requirements.txt && echo "Installed latest dependencies"
 
 dnf install lsof && echo "Installed lsof package"
 
-docker compose -f docker-compose.prod.yml down
 
-docker compose -f docker-compose.prod.yml up -d --build
 
 # Run static analysis
 if pylint app/*.py; then
