@@ -23,6 +23,8 @@ services:
     container_name: mlh-portfolio-nginx
     image: jonasal/nginx-certbot
     restart: always
+    environment:
+      - CERTBOT_EMAIL=name@example.com
     ports:
       - "80:80"
       - "443:443"
