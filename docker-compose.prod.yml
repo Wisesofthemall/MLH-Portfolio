@@ -1,4 +1,3 @@
-version: "3"
 services:
   mlh-portfolio:
     container_name: mlh-portfolio
@@ -35,3 +34,4 @@ services:
 
 volumes:
   mydatabase:
+  nginx_secrets:
