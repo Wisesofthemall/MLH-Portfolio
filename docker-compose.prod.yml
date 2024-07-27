@@ -6,8 +6,6 @@ services:
     restart: always
     env_file:
       - .env
-    ports:
-      - "5000:5000"
     depends_on:
       - db
   db:
@@ -21,6 +19,19 @@ services:
       - MYSQL_DATABASE=myportfoliodb
     volumes:
       - mydatabase:/var/lib/mysql
+
+  nginx:
+    container_name: mlh-portfolio-nginx
+    image: jonasal/nginx-certbot
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./user_conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - mlh-portfolio
 
 volumes:
   mydatabase:
