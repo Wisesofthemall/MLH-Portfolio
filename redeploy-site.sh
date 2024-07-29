@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo -e "\033[34mStarting CD Pipeline\033[0m..."
 start_time=$(date +%s)
 kill_flask_process() {
     if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null ; then
@@ -36,28 +37,21 @@ while [ $retry_count -lt $max_retries ]; do
         kill_flask_process  # Ensure any lingering Flask process is killed
     fi
 done
+end_time=$(date +%s)
+elapsed=$((end_time - start_time))
 
 # Check if Flask started successfully
 if ! $flask_started; then
     echo -e "\033[31mError: Maximum retries reached. Production Flask server failed to start.\033[0m"
     echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
     exit 1
-
-fi
-
-# Restart the myportfolio service
-sudo systemctl restart myportfolio
-
-end_time=$(date +%s)
-elapsed=$((end_time - start_time))
-
-# Check the status of the myportfolio service
-if systemctl is-active --quiet myportfolio; then
-    echo -e "\033[32mSite redeployed successfully!\033[0m"
+else
+    echo -e "\033[32mProduction Flask server started successfully!\033[0m"
     echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
     exit 0
-else
-    echo -e "\033[31mError: Failed to restart myportfolio service.\033[0m"
-    echo -e "\033[38;5;208mCD Pipeline Execution time: $elapsed seconds\033[0m"
-    exit 1
+
 fi
+
+
+
+

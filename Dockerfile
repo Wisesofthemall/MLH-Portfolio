@@ -4,16 +4,18 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip3 install -r requirements.txt
+# Install dependencies and clean up
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        curl \
+        jq \
+        procps \
+        lsof && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install --no-cache-dir -r requirements.txt
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y curl
-
-RUN apt-get update && apt-get install -y jq
-
-
-
+# Command to run your Flask app
 CMD ["flask", "run", "--host=0.0.0.0"]
 
 EXPOSE 5000
