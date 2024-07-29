@@ -20,17 +20,17 @@ services:
       - mydatabase:/var/lib/mysql
 
   nginx:
-    container_name: mlh-portfolio-nginx
+    container_name: nginx
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERTBOT_EMAIL=name@gmail.com
+      - CERTBOT_EMAIL=foxxydieujuste@gmail.com
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
     volumes:
       - nginx_secrets:/etc/letsencrypt
-      - ./user_conf.d
+      - ./user_conf.d:/etc/nginx/user_conf.d
     depends_on:
       - mlh-portfolio
 
