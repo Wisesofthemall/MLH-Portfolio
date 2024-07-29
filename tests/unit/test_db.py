@@ -5,18 +5,18 @@ from app import TimelinePost
 
 MODELS = [TimelinePost]
 # Use an in-memory SQLite for tests.
-test_database = SqliteDatabase(':memory:')
+database = SqliteDatabase(':memory:')
 
 class TestTimelinePost(unittest.TestCase):
 
     def setUp(self):
-        test_database.bind(MODELS, bind_refs=False, bind_backrefs=False)
-        test_database.connect()
-        test_database.create_tables(MODELS)
+        database.bind(MODELS, bind_refs=False, bind_backrefs=False)
+        database.connect()
+        database.create_tables(MODELS)
 
     def tearDown(self):
-        test_database.drop_tables(MODELS)
-        test_database.close()
+        database.drop_tables(MODELS)
+        database.close()
 
     def test_create_post(self):
         first_post = TimelinePost.create(name='Test', email="Test@gmail", content="Hello, I'm test")
@@ -26,5 +26,3 @@ class TestTimelinePost(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
