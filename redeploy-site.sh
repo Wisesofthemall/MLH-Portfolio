@@ -15,9 +15,10 @@ start_flask_server() {
     flask run --host=0.0.0.0 > flask.log 2>&1 &
     flask_pid=$!
     echo "Flask PID: $flask_pid"
-    sleep 5 # Increased wait time for Flask to start
+    sleep 2 # Increased wait time for Flask to start
 }
 
+kill_flask_process  # Ensure any lingering Flask process is killed
 max_retries=3
 retry_count=0
 flask_started=false
