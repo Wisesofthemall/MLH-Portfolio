@@ -29,7 +29,7 @@ load_dotenv()
 from peewee import *
 import os
 
-if os.getenv('TESTING') == 'true':
+if os.getenv("TESTING") == "true":
     print("Running in test mode")
     mydb = SqliteDatabase(':memory:')
 else:
