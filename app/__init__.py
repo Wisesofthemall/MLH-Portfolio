@@ -26,74 +26,74 @@ from app.info import context
 
 load_dotenv()
 
-mydb = MySQLDatabase(
-    os.getenv('MYSQL_DATABASE'),
-    user=os.getenv('MYSQL_USER'),
-    password=os.getenv('MYSQL_PASSWORD'),
-    host=os.getenv('MYSQL_HOST'),
-    port=3306
-)
+# mydb = MySQLDatabase(
+#     os.getenv('MYSQL_DATABASE'),
+#     user=os.getenv('MYSQL_USER'),
+#     password=os.getenv('MYSQL_PASSWORD'),
+#     host=os.getenv('MYSQL_HOST'),
+#     port=3306
+# )
 
 
-class TimelinePost(Model):
-    """
-    Model class to represent the timeline posts.
+# class TimelinePost(Model):
+#     """
+#     Model class to represent the timeline posts.
 
-    Attributes:
-        name (CharField): Name of the post.
-        email (CharField): Email of the post.
-        content (TextField): Content of the post.
-        date (DateTimeField): Date of the post.
-    """
-    name = CharField()
-    email = CharField()
-    content = TextField()
-    created_at = DateTimeField(default=datetime.datetime.now)
+#     Attributes:
+#         name (CharField): Name of the post.
+#         email (CharField): Email of the post.
+#         content (TextField): Content of the post.
+#         date (DateTimeField): Date of the post.
+#     """
+#     name = CharField()
+#     email = CharField()
+#     content = TextField()
+#     created_at = DateTimeField(default=datetime.datetime.now)
 
-    class Meta: # pylint: disable=too-few-public-methods
-        """
-        Meta class to define the database and table for the model.
-        """
-        database = mydb
+#     class Meta: # pylint: disable=too-few-public-methods
+#         """
+#         Meta class to define the database and table for the model.
+#         """
+#         database = mydb
 
-mydb.connect()
-mydb.create_tables([TimelinePost], safe=True)
-app = Flask(__name__)
-@app.route('/api/timeline', methods=['GET', 'POST', 'DELETE'])
-def timeline():
-    """
-    GET and POST route to fetch and add timeline posts.
+# mydb.connect()
+# mydb.create_tables([TimelinePost], safe=True)
+# app = Flask(__name__)
+# @app.route('/api/timeline', methods=['GET', 'POST', 'DELETE'])
+# def timeline():
+#     """
+#     GET and POST route to fetch and add timeline posts.
 
-    This view function fetches all the timeline posts from the database and
-    returns them as a JSON response. It also adds a new post to the database
-    if the request method is POST.
+#     This view function fetches all the timeline posts from the database and
+#     returns them as a JSON response. It also adds a new post to the database
+#     if the request method is POST.
 
-    Returns:
-        dict: JSON response with the timeline posts.
-    """
-    if request.method == 'GET':
+#     Returns:
+#         dict: JSON response with the timeline posts.
+#     """
+#     if request.method == 'GET':
 
-        return {
-            'posts': list(
-                map(model_to_dict,
-                    TimelinePost.select().order_by(TimelinePost.created_at.desc())
-                    )
-                ),
-        }
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        content = request.form['content']
+#         return {
+#             'posts': list(
+#                 map(model_to_dict,
+#                     TimelinePost.select().order_by(TimelinePost.created_at.desc())
+#                     )
+#                 ),
+#         }
+#     if request.method == 'POST':
+#         name = request.form['name']
+#         email = request.form['email']
+#         content = request.form['content']
 
-        post = TimelinePost.create(name=name, email=email, content=content)
-        return model_to_dict(post)
-    if request.method == 'DELETE':
-        i_d  = request.args.get('id')
+#         post = TimelinePost.create(name=name, email=email, content=content)
+#         return model_to_dict(post)
+#     if request.method == 'DELETE':
+#         i_d  = request.args.get('id')
 
-        post = TimelinePost.get_by_id(i_d)
-        post.delete_instance()
-        return model_to_dict(post)
-    return 'Invalid Request Method ', 405
+#         post = TimelinePost.get_by_id(i_d)
+#         post.delete_instance()
+#         return model_to_dict(post)
+#     return 'Invalid Request Method ', 405
 
 
 
