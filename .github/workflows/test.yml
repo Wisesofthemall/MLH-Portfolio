@@ -13,6 +13,11 @@ jobs:
     name: Run Tests
     env:
       TESTING: true
+      URL: localhost:5000
+      MYSQL_HOST: localhost
+      MYSQL_USER: lovinson
+      MYSQL_PASSWORD: 01302004
+      MYSQL_DATABASE: myportfoliodb
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
