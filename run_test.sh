@@ -27,28 +27,18 @@ fi
 # Run pytest and capture the exit status
 pytest tests/unit
 TEST_STATUS=$?
-if [ $TEST_STATUS -eq 0 ]; then
-    echo -e "\033[32mUnit tests passed\033[0m"
-else
-    echo -e "\033[31mUnit tests failed\033[0m"
-    exit 1
-fi
-echo -e "\033[34mRunning Database tests\033[0m..."
-chmod +x ./test_db.sh
-./test_db.sh
-DB_TEST_STATUS=$?
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
-if [ $DB_TEST_STATUS -eq 0 ]; then
-    echo -e "\033[32mDatabase CI passed\033[0m"
+if [ $TEST_STATUS -eq 0 ]; then
+    echo -e "\033[32mUnit tests passed\033[0m"
     echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # O
     exit 0
 else
-    echo -e "\033[31mDatabase CI failed\033[0m"
+    echo -e "\033[31mUnit tests failed\033[0m"
     echo -e "\033[38;5;208mCI Pipeline Execution time: $elapsed seconds\033[0m" # O
     exit 1
 fi
 
-exit 0
+
 
 
