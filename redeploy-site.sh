@@ -4,7 +4,7 @@ echo -e "\033[34mStarting CD Pipeline\033[0m..."
 start_time=$(date +%s)
 
 kill_flask_process() {
-    if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null ; then
+    if netstat -tuln | grep ':5000 ' >/dev/null ; then
         echo "Killing existing Production Flask server..."
         kill -9 $(lsof -ti :5000)
     fi

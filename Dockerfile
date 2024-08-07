@@ -10,6 +10,7 @@ RUN apt-get update && \
         git \
         curl \
         jq \
+        iproute2 \
         procps \
         lsof && \
     rm -rf /var/lib/apt/lists/* && \
