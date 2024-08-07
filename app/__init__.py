@@ -58,7 +58,7 @@ load_dotenv()
 
 # mydb.connect()
 # mydb.create_tables([TimelinePost], safe=True)
-# app = Flask(__name__)
+app = Flask(__name__)
 # @app.route('/api/timeline', methods=['GET', 'POST', 'DELETE'])
 # def timeline():
 #     """
