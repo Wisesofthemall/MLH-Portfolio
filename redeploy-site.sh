@@ -1,6 +1,5 @@
 #!/bin/bash
 
-start_time=$(date +%s)
 # Commands to execute after attaching to tmux session
 cd ~/MLH-Portfolio && echo "Changed directory to ~/MLH-Portfolio"
 
