@@ -45,16 +45,12 @@ jobs:
     name: "Deploy to VPS"
     runs-on: ubuntu-latest
     steps:
-      - name: Start SSH agent
-        run: eval "$(ssh-agent -s)"
-
-      - name: Add SSH key
-        run: echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          cat > ~/.ssh/config <<-END
+          echo "$SSH_PRIVATE_KEY " > ~/.ssh/MLH-Key.pem
+          chmod 600 ~/.ssh/MLH-Key.pem
+          cat >> ~/.ssh/config << END
           Host my-vps
             HostName $SSH_IP
             User $SSH_USER
@@ -66,8 +62,5 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
           SSH_USER: ${{ secrets.SSH_USER }}
 
-      - name: Test SSH Connection
-        run: ssh -v my-vps 'echo "SSH connection successful"'
-
       - name: Deploy to VPS
-        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
+        run: ssh my-vps 'cd ${{ secrets.SSH_PRIVATE_KEY}}&& git pull'
