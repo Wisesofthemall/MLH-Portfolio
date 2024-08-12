@@ -63,4 +63,4 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
 
       - name: Deploy to VPS
-        run: ssh my-vps 'cd ${{ secrets.SSH_PRIVATE_KEY}} && git pull'
+        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT}} && git pull'
