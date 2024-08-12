@@ -48,7 +48,7 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE_KEY " > ~/.ssh/MLH-Key.pem
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/MLH-Key.pem
           chmod 600 ~/.ssh/MLH-Key.pem
           cat >> ~/.ssh/config << END
           Host my-vps
