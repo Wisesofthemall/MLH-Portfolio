@@ -3,7 +3,7 @@ This module defines the context dictionary used to render HTML templates.
 """
 
 context = {
-    'name': 'Lovinson Dieujuste 🔥 ',
+    'name': 'Lovinson Dieujuste 🔥',
     'role': 'Site Reliability Engineer',
     'title': 'My Personal Portfolio',
     'about': (
