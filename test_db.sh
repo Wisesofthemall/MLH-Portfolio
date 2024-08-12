@@ -23,7 +23,7 @@ post_output=$(curl -s -X POST "$base_url" -d 'name=Lovinson&email=lovinson@gmail
 
 # Check if the POST request succeeded and retrieve the ID
 if [ $? -ne 0 ]; then
-    echo -e "\033[31mError: Failed to create a new timeline post.\033[0m"
+    echo -e "\033[31mError: Failed to create  new timeline post.\033[0m"
     exit 1
 fi
 
